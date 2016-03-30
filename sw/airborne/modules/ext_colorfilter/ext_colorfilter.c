@@ -275,7 +275,7 @@ for (uint8_t nn=0; nn<=4; nn++) {
       source += 4;
     }
   } 
-printf("orange %d %d %d %d %d " ,cnt[0],cnt[1],cnt[2],cnt[3],cnt[4]);
+//printf("orange %d %d %d %d %d " ,cnt[0],cnt[1],cnt[2],cnt[3],cnt[4]);
 // Orange Count
   *left_cnt=1.0*cnt[0]/n_pixel_color[0];
   *centrel_cnt=1.0*cnt[1]/n_pixel_color[1];

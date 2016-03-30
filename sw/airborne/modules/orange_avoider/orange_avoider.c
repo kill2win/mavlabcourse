@@ -30,21 +30,21 @@ uint8_t safeToGoForwards=FALSE;
 * Charles 
 */
 // Set all tresholds!!!
-float tresholdOrange_lcnt = 0.7;
-float tresholdOrange_clcnt = 0.7;
-float tresholdOrange_cccnt = 0.6;
-float tresholdOrange_crcnt = 0.7;
-float tresholdOrange_rcnt = 0.7;
-float tresholdBlack_lcnt = 0.7;
-float tresholdBlack_clcnt = 0.7;
-float tresholdBlack_cccnt = 0.8;
-float tresholdBlack_crcnt = 0.7;
-float tresholdBlack_rcnt = 0.7;
-float tresholdavg_lcnt = 0.7;
-float tresholdavg_clcnt = 0.6;
-float tresholdavg_cccnt = 0.6;
-float tresholdavg_crcnt = 0.6;
-float tresholdavg_rcnt = 0.7;
+float tresholdOrange_lcnt = 0.35;
+float tresholdOrange_clcnt = 0.35;
+float tresholdOrange_cccnt = 0.35;
+float tresholdOrange_crcnt = 0.35;
+float tresholdOrange_rcnt = 0.35;
+float tresholdBlack_lcnt = 0.5;
+float tresholdBlack_clcnt = 0.5;
+float tresholdBlack_cccnt = 0.5;
+float tresholdBlack_crcnt = 0.5;
+float tresholdBlack_rcnt = 0.5;
+float tresholdavg_lcnt = 0.5;
+float tresholdavg_clcnt = 0.5;
+float tresholdavg_cccnt = 0.5;
+float tresholdavg_crcnt = 0.5;
+float tresholdavg_rcnt = 0.5;
 int32_t incrementForAvoidance;
 uint8_t stopGoingHigher=FALSE;
 float maxHeight = 6;
@@ -103,10 +103,11 @@ void orange_avoider_periodic() {
 	( safeToGoForwards_Orange) && (safeToGoForwards_Average) && (safeToGoForwards_Black)		
 	 );  
 	
-printf("Save to go:%d Orange %d , Average %d , Black %d \n",  safeToGoForwards, safeToGoForwards_Orange, safeToGoForwards_Average, safeToGoForwards_Black);
-printf("Left:%d LeftCentre %d , Centre %d , RightCentre %d , Right %d \n",  safe_Left, safe_LeftCentre, safe_Centre,  safe_RightCentre , safe_Right);
-printf("avgleft= %3f, avgleftc= %3f, avgcc= %3f, avgrightc= %3f, avgright= %3f \n", avg_lcnt, avg_clcnt, avg_cccnt, avg_crcnt,avg_rcnt);
-//printf("blackleft %3f, blackleftc %3f, blackcc %3f, blackrightc, %3f, blackright %3f \n ", black_lcnt, black_clcnt, black_cccnt, black_crcnt, black_rcnt);
+printf("\n\nSave to go:%d Orange %d , Average %d , Black %d ",  safeToGoForwards, safeToGoForwards_Orange, safeToGoForwards_Average, safeToGoForwards_Black);
+printf("\nLeft:%d LeftCentre %d , Centre %d , RightCentre %d , Right %d \n",  safe_Left, safe_LeftCentre, safe_Centre,  safe_RightCentre , safe_Right);
+printf("\navgleft= %3f, avgleftc= %3f, avgcc= %3f, avgrightc= %3f, avgright= %3f \n", avg_lcnt, avg_clcnt, avg_cccnt, avg_crcnt,avg_rcnt);
+printf("\nblackleft %3f, blackleftc %3f, blackcc %3f, blackrightc, %3f, blackright %3f \n ", black_lcnt, black_clcnt, black_cccnt, black_crcnt, black_rcnt);
+printf("\noraleft %3f, oraleftc %3f, oracc %3f, orarightc, %3f, oraright %3f \n ", lcnt, clcnt, cccnt, crcnt, rcnt);
 
 	checkHeight(maxHeight);
 }
@@ -121,25 +122,25 @@ uint8_t increase_nav_heading(int32_t *heading, int32_t increment)
 	*heading = *heading + 2000; 
   }
   else if (!safe_Centre && !safe_RightCentre) {
-	*heading = *heading - 1500; 
-  }
-  else if (!safe_Centre && !safe_LeftCentre) {
 	*heading = *heading + 1500; 
   }
+  else if (!safe_Centre && !safe_LeftCentre) {
+	*heading = *heading - 1500; 
+  }
   else if (!safe_Centre) {
-	*heading = *heading + 1000; 
+	*heading = *heading - 1000; 
   }
   else if (!safe_LeftCentre){
-	*heading = *heading + 300; 
-  }
-  else if (!safe_RightCentre){
 	*heading = *heading - 300; 
   }
+  else if (!safe_RightCentre){
+	*heading = *heading + 300; 
+  }
   else if (!safe_Right){
-	*heading = *heading - 100; 
+	*heading = *heading + 100; 
   }
   else if (!safe_Left){
-	*heading = *heading + 100; 
+	*heading = *heading - 100; 
   }
   else {
   *heading = *heading + increment;
