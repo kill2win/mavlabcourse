@@ -30,17 +30,34 @@ uint8_t safeToGoForwards=FALSE;
 * Charles 
 */
 // Set all tresholds!!!
-float tresholdOrange_lcnt = 0.5;
-float tresholdOrange_clcnt = 0.5;
-float tresholdOrange_crcnt = 0.5;
-float tresholdOrange_rcnt = 0.5;
-float tresholdavg_lcnt = 0.4;
-float tresholdavg_clcnt = 0.4;
-float tresholdavg_crcnt = 0.4;
-float tresholdavg_rcnt = 0.4;
+float tresholdOrange_lcnt = 0.7;
+float tresholdOrange_clcnt = 0.7;
+float tresholdOrange_cccnt = 0.6;
+float tresholdOrange_crcnt = 0.7;
+float tresholdOrange_rcnt = 0.7;
+float tresholdBlack_lcnt = 0.7;
+float tresholdBlack_clcnt = 0.7;
+float tresholdBlack_cccnt = 0.8;
+float tresholdBlack_crcnt = 0.7;
+float tresholdBlack_rcnt = 0.7;
+float tresholdavg_lcnt = 0.7;
+float tresholdavg_clcnt = 0.6;
+float tresholdavg_cccnt = 0.6;
+float tresholdavg_crcnt = 0.6;
+float tresholdavg_rcnt = 0.7;
 int32_t incrementForAvoidance;
 uint8_t stopGoingHigher=FALSE;
 float maxHeight = 6;
+
+uint8_t safeToGoForwards_Orange=FALSE;
+uint8_t safeToGoForwards_Average=FALSE;
+uint8_t safeToGoForwards_Black=FALSE;
+
+uint8_t safe_Left=FALSE;
+uint8_t safe_LeftCentre=FALSE;
+uint8_t safe_Centre=FALSE;
+uint8_t safe_RightCentre=FALSE;
+uint8_t safe_Right=FALSE;
 
 void orange_avoider_init() {
 	// Initialise the variables of the colorfilter to accept orange
@@ -55,22 +72,41 @@ void orange_avoider_init() {
 	chooseRandomIncrementAvoidance();
 }
 void orange_avoider_periodic() {
-	// Check the amount of orange. If this is above a threshold
-	// you want to turn a certain amount of degrees
-	safeToGoForwards = (
-		(  (lcnt < tresholdOrange_lcnt)    // left sector orange count
+	safe_Left=((lcnt < tresholdOrange_lcnt) && (avg_lcnt < tresholdavg_lcnt) && (black_lcnt < tresholdBlack_lcnt));
+	safe_LeftCentre=((clcnt < tresholdOrange_clcnt) && (avg_clcnt < tresholdavg_clcnt) && (black_clcnt < tresholdBlack_clcnt));
+	safe_Centre=((cccnt < tresholdOrange_cccnt) && (avg_cccnt < tresholdavg_cccnt) && (black_cccnt < tresholdBlack_cccnt));
+	safe_RightCentre=((crcnt < tresholdOrange_crcnt) && (avg_crcnt < tresholdavg_crcnt) && (black_crcnt < tresholdBlack_crcnt));
+	safe_Right=((rcnt < tresholdOrange_rcnt)&&(avg_rcnt < tresholdavg_rcnt)&&(black_rcnt < tresholdBlack_rcnt));
+
+	safeToGoForwards_Orange=(  (lcnt < tresholdOrange_lcnt)    // left sector orange count
 		&&(clcnt < tresholdOrange_clcnt)  // left centre sector orange count
+		&&(cccnt < tresholdOrange_cccnt)  //centre centre
 		&&(crcnt < tresholdOrange_crcnt)  // right centre sector orange count
 		&&(rcnt < tresholdOrange_rcnt) // right sector orange count
-		) &&
-		(
+		);
+	safeToGoForwards_Average=(
 		(avg_lcnt < tresholdavg_lcnt)
 		&&(avg_clcnt < tresholdavg_clcnt)
+		&&(avg_cccnt < tresholdavg_cccnt)
 		&&(avg_crcnt < tresholdavg_crcnt)
 		&&(avg_rcnt < tresholdavg_rcnt)
-		)		
+		);
+	safeToGoForwards_Black=( 
+		(black_lcnt < tresholdBlack_lcnt)
+		&&(black_clcnt < tresholdBlack_clcnt)
+		&&(black_cccnt < tresholdBlack_cccnt)
+		&&(black_crcnt < tresholdBlack_crcnt)
+		&&(black_rcnt < tresholdBlack_rcnt)
+		);
+
+	safeToGoForwards =( 
+	( safeToGoForwards_Orange) && (safeToGoForwards_Average) && (safeToGoForwards_Black)		
 	 );  
-	printf("Save to go:%d \n avgleft= %3f, avgleftc= %3f, avgrightc= %3f, avgright= %3f \n oraleft %3f, oraleftc %3f, orarightc, %3f, oraright %3f \n", safeToGoForwards, avg_lcnt,avg_clcnt,avg_crcnt,avg_rcnt, lcnt, clcnt, crcnt, rcnt);
+	
+printf("Save to go:%d Orange %d , Average %d , Black %d \n",  safeToGoForwards, safeToGoForwards_Orange, safeToGoForwards_Average, safeToGoForwards_Black);
+printf("Left:%d LeftCentre %d , Centre %d , RightCentre %d , Right %d \n",  safe_Left, safe_LeftCentre, safe_Centre,  safe_RightCentre , safe_Right);
+printf("avgleft= %3f, avgleftc= %3f, avgcc= %3f, avgrightc= %3f, avgright= %3f \n", avg_lcnt, avg_clcnt, avg_cccnt, avg_crcnt,avg_rcnt);
+//printf("blackleft %3f, blackleftc %3f, blackcc %3f, blackrightc, %3f, blackright %3f \n ", black_lcnt, black_clcnt, black_cccnt, black_crcnt, black_rcnt);
 
 	checkHeight(maxHeight);
 }
@@ -81,8 +117,34 @@ void orange_avoider_periodic() {
  */
 uint8_t increase_nav_heading(int32_t *heading, int32_t increment)
 {
+  if (!safe_Centre && !safe_RightCentre && !safe_LeftCentre) {
+	*heading = *heading + 2000; 
+  }
+  else if (!safe_Centre && !safe_RightCentre) {
+	*heading = *heading - 1500; 
+  }
+  else if (!safe_Centre && !safe_LeftCentre) {
+	*heading = *heading + 1500; 
+  }
+  else if (!safe_Centre) {
+	*heading = *heading + 1000; 
+  }
+  else if (!safe_LeftCentre){
+	*heading = *heading + 300; 
+  }
+  else if (!safe_RightCentre){
+	*heading = *heading - 300; 
+  }
+  else if (!safe_Right){
+	*heading = *heading - 100; 
+  }
+  else if (!safe_Left){
+	*heading = *heading + 100; 
+  }
+  else {
   *heading = *heading + increment;
-  // Check if your turn made it go out of bounds...
+  // Check if your turn made it go out of bounds... 
+  }
   INT32_ANGLE_NORMALIZE(*heading); // HEADING HAS INT32_ANGLE_FRAC....
   return FALSE;
 }
@@ -167,7 +229,7 @@ float checkHeight(float maxHeight){
 	  //float altitude2 = pos2->y;
 	  float altitude3 = pos3->z;
 
-	  	  printf("Checking what the z coordinate is %f maxHeight: %f \n", altitude3, maxHeight);
+	  	 // printf("Checking what the z coordinate is %f maxHeight: %f \n", altitude3, maxHeight);
 	  	  if(altitude3 > maxHeight){
 	  	  		stopGoingHigher=TRUE;
 	  	  	  }
@@ -175,7 +237,7 @@ float checkHeight(float maxHeight){
 	  	  	  	stopGoingHigher=FALSE;
 	  	            }
 
-	  	printf("Is maxheight?  %d \n", stopGoingHigher);
+	  	//printf("Is maxheight?  %d \n", stopGoingHigher);
 	return FALSE;
 }
 
