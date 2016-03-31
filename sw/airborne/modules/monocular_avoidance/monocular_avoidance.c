@@ -230,7 +230,7 @@ bool_t process_frame(struct image_t* img)
   //focus_of_expansion(vectors,&focus_x,&focus_y,result.tracked_cnt);
   
   
-  DOWNLINK_SEND_MONOCULAR_AVOIDANCE(DefaultChannel, DefaultDevice, &debug, &debug_tr, &u, &v, &divMag, &phi_temp, &theta_temp, &psi_temp, &x_temp, &y_temp, &z_temp);
+  DOWNLINK_SEND_MONOCULAR_AVOIDANCE(DefaultChannel, DefaultDevice, &debug, &debug_tr, &u, &divMag, &div1, &phi_temp, &theta_temp, &psi_temp, &x_temp, &y_temp, &z_temp);
 
  // DOWNLINK_SEND_MONOCULAR_AVOIDANCE(DefaultChannel, DefaultDevice, &vector_debug);
   
