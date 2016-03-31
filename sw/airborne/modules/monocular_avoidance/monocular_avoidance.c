@@ -191,7 +191,7 @@ bool_t process_frame(struct image_t* img)
                                        opticflow.window_size / 2, opticflow.subpixel_factor, opticflow.max_iterations,
                                        opticflow.threshold_vec, opticflow.max_track_corners);
 
-  image_show_flow(img, vectors, result.tracked_cnt, opticflow.subpixel_factor);
+  //image_show_flow(img, vectors, result.tracked_cnt, opticflow.subpixel_factor);
   
   divergence = 0;
   u = 0;

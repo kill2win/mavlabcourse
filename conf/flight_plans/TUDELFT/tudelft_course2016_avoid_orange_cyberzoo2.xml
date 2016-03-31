@@ -77,7 +77,7 @@
     </block>
     <block name="StayGoal">
       <go wp="GOAL"/>
-      <exception cond="block_time > 1" deroute="MoveGoalForward"/>
+      <exception cond="block_time > 0.5" deroute="MoveGoalForward"/>
       <exception cond="!safeToGoForwards" deroute="ChangeHeading"/>
       <exception cond="!InsideObstacleZone(GetPosX(),GetPosY())" deroute="PrepareObstacleRun"/>
     </block>
@@ -101,13 +101,13 @@
       <call fun="nav_set_heading_towards_waypoint(WP_HOME)"/>
       <call fun="increase_nav_heading(&nav_heading, incrementForAvoidance)"/>
       <stay wp="STDBY"/>
-      <exception cond="block_time > 1" deroute="GetOutOfObstacleZone"/>
+      <exception cond="block_time > 0.5" deroute="GetOutOfObstacleZone"/>
     </block>
     <block name="GetOutOfObstacleZone">
       <call fun="moveWaypointForwards(WP_GOAL,1)"/>
       <call fun="chooseRandomIncrementAvoidance()"/>
       <stay wp="GOAL"/>
-      <exception cond="block_time > 1" deroute="START"/>
+      <exception cond="block_time > 0.5" deroute="START"/>
     </block>
     <block key="l" name="Land here" strip_button="Land Here" strip_icon="land-right.png">
       <call fun="NavSetWaypointHere(WP_TD)"/>
