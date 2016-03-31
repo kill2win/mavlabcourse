@@ -71,7 +71,7 @@ void orange_avoider_periodic() {
 		&&(avg_crcnt < tresholdavg_crcnt)
 		&&(avg_rcnt < tresholdavg_rcnt)
 		)		
-		&&(div1<0.15)
+		&&(div1<0.1)
 	 );  
 	printf("Save to go:%d \n avgleft= %3f, avgleftc= %3f, avgrightc= %3f, avgright= %3f \n oraleft %3f, oraleftc %3f, orarightc, %3f, oraright %3f \n", safeToGoForwards, avg_lcnt,avg_clcnt,avg_crcnt,avg_rcnt, lcnt, clcnt, crcnt, rcnt);
 	
