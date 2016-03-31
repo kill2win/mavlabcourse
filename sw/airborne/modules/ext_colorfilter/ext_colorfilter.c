@@ -29,12 +29,12 @@ uint8_t color_cr_min  = 5;
 uint8_t color_cr_max  = 250;
 
 //Tresholds for floor color
-float floor_0=118.0;
+/*float floor_0=118.0;
 float floor_1=60.0;
 float floor_2=126.0;
 float floor_3=60.0;
 float floor_tol=0.05;
-float floor_tol2=0.45;
+float floor_tol2=0.45;*/
 
 //Tresholds for black color
 float black_0=126.9;
@@ -47,8 +47,8 @@ float black_tol2=0.15;
 
 float fh_u=0.2;  // upper free space
 float fh_l=0.2;  // lower free space
-float avg_tol = 0.075;  //Tolerance Factor for determing average pixels!
-float avg_tol2 = 0.1;
+//float avg_tol = 0.075;  //Tolerance Factor for determing average pixels!
+//float avg_tol2 = 0.1;
 float centre_width=0.5; //Set width of combined middle sectors
 float s_width=0.2; //Set width of combined middle sectors
 
@@ -64,32 +64,32 @@ float black_cccnt = 0; //leftcentrecount
 float black_crcnt = 0; //rightcentrecount
 float black_rcnt = 0; //rightcount
 
-float avg_lcnt = 0;  //averageleftcount
+/*float avg_lcnt = 0;  //averageleftcount
 float avg_clcnt = 0; //averageleftcentrecount
 float avg_cccnt = 0; //averagecentrecentrecount
 float avg_crcnt = 0; //averagerightcentrecount
-float avg_rcnt = 0; //averagerightcount 
+float avg_rcnt = 0; //averagerightcount */
 
 uint16_t cnt[5] = {0, 0, 0, 0, 0};
 uint16_t black_cnt[5] = {0, 0, 0, 0, 0};
-uint16_t avg_count [5] = {0, 0, 0, 0, 0};
-uint32_t img_prop[5][4] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
-float avg_img_prop[5][4] = {{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0}};
+//uint16_t avg_count [5] = {0, 0, 0, 0, 0};
+//uint32_t img_prop[5][4] = {{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0},{0, 0, 0, 0}};
+//float avg_img_prop[5][4] = {{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0},{0.0, 0.0, 0.0, 0.0}};
 
-uint32_t n_pixel_gray = 0;
+//uint32_t n_pixel_gray = 0;
 
-uint32_t n_pixel_avg[5] = {1, 1, 1, 1, 1};
+//uint32_t n_pixel_avg[5] = {1, 1, 1, 1, 1};
 uint32_t n_pixel_color[5] = {1, 1, 1, 1, 1};
 
 
 uint16_t ext_colorfilter(struct image_t *input, struct image_t *output, uint8_t y_m, uint8_t y_M, uint8_t u_m,
-          uint8_t u_M, uint8_t v_m, uint8_t v_M, float *left_cnt, float *centrel_cnt, float *centrec_cnt, float *centrer_cnt , float *right_cnt, float *left_avgcnt, float *centrel_avgcnt, float *centrec_avgcnt, float *centrer_avgcnt , float *right_avgcnt, float *left_black_cnt, float *centrel_black_cnt, float *centrec_black_cnt, float *centrer_black_cnt, float *right_black_cnt);
+          uint8_t u_M, uint8_t v_m, uint8_t v_M, float *left_cnt, float *centrel_cnt, float *centrec_cnt, float *centrer_cnt , float *right_cnt, float *left_black_cnt, float *centrel_black_cnt, float *centrec_black_cnt, float *centrer_black_cnt, float *right_black_cnt);
 uint16_t ext_colorfilter(struct image_t *input, struct image_t *output, uint8_t y_m, uint8_t y_M, uint8_t u_m,
-          uint8_t u_M, uint8_t v_m, uint8_t v_M, float *left_cnt, float *centrel_cnt , float *centrec_cnt, float *centrer_cnt, float *right_cnt, 	float *left_avgcnt, float *centrel_avgcnt , float *centrec_avgcnt, float *centrer_avgcnt , float *right_avgcnt, float *left_black_cnt, float *centrel_black_cnt, float *centrec_black_cnt, float *centrer_black_cnt, float *right_black_cnt)
+          uint8_t u_M, uint8_t v_m, uint8_t v_M, float *left_cnt, float *centrel_cnt , float *centrec_cnt, float *centrer_cnt, float *right_cnt, float *left_black_cnt, float *centrel_black_cnt, float *centrec_black_cnt, float *centrer_black_cnt, float *right_black_cnt)
 {
 
 //Set all counting variables to zero
-for(uint8_t j = 0; j <=3; j++)
+/*for(uint8_t j = 0; j <=3; j++)
 {
 	
     	img_prop[0][j] = 0;
@@ -103,13 +103,13 @@ for(uint8_t j = 0; j <=3; j++)
 	avg_img_prop[3][j] = 0.0;
 	avg_img_prop[4][j] = 0.0;
 	n_pixel_gray=0;	
-}
+}*/
 for(uint8_t j = 0; j <=4; j++)
 {	
 	cnt[j] = 0;
 	black_cnt[j]=0;
-	avg_count [j] = 0;	
-    	n_pixel_avg[j]=1;
+//	avg_count [j] = 0;	
+  //  	n_pixel_avg[j]=1;
 	n_pixel_color[j]=1;
 }
  
@@ -123,18 +123,18 @@ for(uint8_t j = 0; j <=4; j++)
   h_max=output->h;
   
   //--------- Calculation of an average Value for uyvy---------------------------------------------------
-  uint8_t *source2 = input->buf;
-  uint8_t *dest2 = output->buf;
+  //uint8_t *source2 = input->buf;
+  //uint8_t *dest2 = output->buf;
 
 
-float floor_0min = (1-floor_tol)* floor_0;
+/*float floor_0min = (1-floor_tol)* floor_0;
 float floor_0max = (1+floor_tol)* floor_0;
 float floor_1min = (1-floor_tol2)* floor_1;
 float floor_1max = (1+floor_tol2)* floor_1;
 float floor_2min = (1-floor_tol)* floor_2;
 float floor_2max = (1+floor_tol)* floor_2;
 float floor_3min = (1-floor_tol2)* floor_3;
-float floor_3max = (1+floor_tol2)* floor_3;
+float floor_3max = (1+floor_tol2)* floor_3;*/
 
 
 float black_0min = (1-black_tol)* black_0;
@@ -239,10 +239,10 @@ float black_3max = (1+black_tol2)* black_3;
 		if ((x>=(1.0*j*s_width*w_max))&&(x<(1.0*(j+1)*s_width*w_max))&&(y>fh_u*h_max)&&(y<(1-fh_l)*h_max)) {  //left sector
 			cnt[j] ++;
 			// UYVY
-			dest[0] = 230-j*50;         // U
+			/*dest[0] = 230-j*50;         // U
 			dest[1] = source[1];  // Y
 			dest[2] = 20+j*30;       // V
-			dest[3] = source[3];  // Y 
+			dest[3] = source[3];  // Y */
 			}
 		}	
 		
@@ -269,7 +269,10 @@ float black_3max = (1+black_tol2)* black_3;
 		
 
 	      } 
-	
+	dest[0] = source[0];         // U
+			dest[1] = source[1];  // Y
+			dest[2] = source[2];       // V
+			dest[3] = source[3];  // Y 
       // Go to the next 2 pixels
       dest += 4;
       source += 4;
@@ -289,12 +292,12 @@ float black_3max = (1+black_tol2)* black_3;
   *centrer_black_cnt=1.0*black_cnt[3]/n_pixel_color[3];
   *right_black_cnt=1.0*black_cnt[4]/n_pixel_color[4];
 // Average Count
-  *left_avgcnt=1.0*(avg_count[0])/n_pixel_avg[0];
+  /*left_avgcnt=1.0*(avg_count[0])/n_pixel_avg[0];
   *centrel_avgcnt=1.0*(avg_count[1])/n_pixel_avg[1];
   *centrec_avgcnt=1.0*(avg_count[2])/n_pixel_avg[2];
   *centrer_avgcnt=1.0*(avg_count[3])/n_pixel_avg[3];
-  *right_avgcnt=1.0*(avg_count[4])/n_pixel_avg[4];
-  return n_pixel_gray; //n_pixel_gray to determine how many pixels are neglegted
+  *right_avgcnt=1.0*(avg_count[4])/n_pixel_avg[4];*/
+  return 1; //n_pixel_gray to determine how many pixels are neglegted
 }
 
 // Result
@@ -320,18 +323,17 @@ bool_t colorfilter_func(struct image_t* img)
   black_rcnt = 0;
   
   //Average Count
-  avg_lcnt = 0;
+  /*avg_lcnt = 0;
   avg_clcnt = 0;
   avg_cccnt = 0;
   avg_crcnt = 0; 
-  avg_rcnt = 0;
+  avg_rcnt = 0;*/
 
   // Filter
   color_count = ext_colorfilter(img,img,
       color_lum_min,color_lum_max,
       color_cb_min,color_cb_max,
-      color_cr_min,color_cr_max, &lcnt, &clcnt,&cccnt, &crcnt ,&rcnt, &avg_lcnt, &avg_clcnt, &avg_cccnt, &avg_crcnt ,&avg_rcnt,     
-      &black_lcnt, &black_clcnt, &black_cccnt, &black_crcnt, &black_rcnt
+      color_cr_min,color_cr_max, &lcnt, &clcnt,&cccnt, &crcnt ,&rcnt,     &black_lcnt, &black_clcnt, &black_cccnt, &black_crcnt, &black_rcnt
       );
 
 	DOWNLINK_SEND_EXT_COLORFILTER(DefaultChannel, DefaultDevice, &color_count);

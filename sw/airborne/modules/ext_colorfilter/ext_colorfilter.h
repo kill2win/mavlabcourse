@@ -23,14 +23,14 @@ extern uint8_t color_cb_max;
 
 extern uint8_t color_cr_min;
 extern uint8_t color_cr_max;
-
+/*
 extern float floor_0;
 extern float floor_1;
 extern float floor_2;
 extern float floor_3;
 extern float floor_tol;
 extern float floor_tol2;
-
+*/
 extern float black_tol;
 extern float black_tol2;
 
@@ -38,8 +38,8 @@ extern int color_count;
 
 extern float fh_u;  // upper free space
 extern float fh_l;  // lower free space
-extern float avg_tol;  //Tolerance Factor for determing average pixels!
-extern float avg_tol2;
+//extern float avg_tol;  //Tolerance Factor for determing average pixels!
+//extern float avg_tol2;
 extern float centre_width; //Set width of combined middle sectors 
 
 
@@ -55,12 +55,13 @@ extern float black_cccnt; //leftcentrecount
 extern float black_crcnt; //rightcentrecount
 extern float black_rcnt; //rightcount
 
+/*
 extern float avg_lcnt;  //leftcount
 extern float avg_clcnt; //leftcentrecount
 extern float avg_cccnt; //leftcentrecount
 extern float avg_crcnt; //rightcentrecount
 extern float avg_rcnt; //rightcount
-
+*/
 extern void ext_colorfilter_init(void);
 
 #endif
