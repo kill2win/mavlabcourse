@@ -27,6 +27,10 @@
   <init fun="colorfilter_init()"/>
   <makefile>
     <file name="colorfilter.c"/>
+    <file name="image.c" dir="modules/computer_vision/lib/vision"/>
+
+    <!-- Main vision calculations -->
+    <file name="fast_rosten.c" dir="modules/computer_vision/lib/vision"/>
   </makefile>
 </module>
 

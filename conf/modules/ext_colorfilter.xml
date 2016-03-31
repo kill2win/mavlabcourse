@@ -11,16 +11,14 @@
       <dl_settings NAME="ExtColorFilter">
          <dl_setting var="fh_u" min="0.0" step="0.05" max="0.45" shortname="fh_u" />
          <dl_setting var="fh_l" min="0.0" step="0.05" max="0.45" shortname="fh_l" />
+         <dl_setting var="centre_width"  min="0.2" step="0.05" max="0.8" shortname="centre_width" />
          <dl_setting var="avg_tol"  min="0.005" step="0.005" max="0.5" shortname="avg_tol" />
-         <dl_setting var="avg_tol2"  min="0.005" step="0.005" max="0.5" shortname="avg_tol" />
          <dl_setting var="floor_0" min="110.0" step="0.05" max="140.0" shortname="floor_0" />
          <dl_setting var="floor_2" min="110.0" step="0.05" max="140.0" shortname="floor_2" />
          <dl_setting var="floor_1" min="25.0" step="0.05" max="75.0" shortname="floor_1" />
-         <dl_setting var="floor_3" min="25.0" step="0.05" max="75.0" shortname="floor_3" /> 
-	 <dl_setting var="floor_tol" min="0.0" step="0.005" max="0.6" shortname="floor_tol" />
- 	<dl_setting var="floor_tol2" min="0.0" step="0.005" max="0.6" shortname="floor_tol2" />
-	<dl_setting var="black_tol" min="0.0" step="0.005" max="0.4" shortname="black_tol" />
- 	<dl_setting var="black_tol2" min="0.0" step="0.005" max="0.4" shortname="black_tol2" />
+         <dl_setting var="floor_3" min="25.0" step="0.05" max="75.0" shortname="floor_3" />
+	 <dl_setting var="floor_tol" min="0.0" step="0.005" max="0.2" shortname="floor_tol" />
+ 	<dl_setting var="floor_tol2" min="0.0" step="0.005" max="0.2" shortname="floor_tol2" />
       </dl_settings>
     </dl_settings>
   </settings>

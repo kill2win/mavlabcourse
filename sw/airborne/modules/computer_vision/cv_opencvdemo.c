@@ -27,18 +27,36 @@
 #include "modules/computer_vision/cv_opencvdemo.h"
 #include "modules/computer_vision/opencv_example.h"
 
+//derotation test
+//state 
+#include "state.h"
+#include "subsystems/imu.h"
+
+  float theta_prev = 0;
+  float phi_prev = 0;
+  float psi_prev = 0;
+
 
 // Function
 bool_t opencv_func(struct image_t* img);
 bool_t opencv_func(struct image_t* img)
 {
+  
+  float theta = stateGetNedToBodyEulers_f()->theta;//fetch the body angles
+  float phi = stateGetNedToBodyEulers_f()->phi;
+  float psi = stateGetNedToBodyEulers_f()->psi;
 
   if (img->type == IMAGE_YUV422)
   {
     // Call OpenCV (C++ from paparazzi C function)
     opencv_example((char*) img->buf, img->w, img->h);
+    //derotation_test((char*) img->buf, img->w, img->h, theta, phi, psi, theta_prev, phi_prev, psi_prev);
   }
 
+  theta_prev = theta;
+  phi_prev = phi;
+  psi_prev = psi;
+  
 // opencv_example(NULL, 10,10);
 
   return FALSE;

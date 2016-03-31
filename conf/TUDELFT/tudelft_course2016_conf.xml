@@ -1,13 +1,13 @@
 <conf>
   <aircraft
    name="bebop_avoid"
-   ac_id="2"
+   ac_id="6"
    airframe="airframes/TUDELFT/tudelft_course2016_bebop_avoider.xml"
    radio="radios/dummy.xml"
-   telemetry="telemetry/default_rotorcraft.xml"
-   flight_plan="flight_plans/TUDELFT/tudelft_course2016_avoid_orange_cyberzoo.xml"
+   telemetry="telemetry/default_rotorcraft_course.xml"
+   flight_plan="flight_plans/TUDELFT/tudelft_course2016_avoid_orange_cyberzoo2.xml"
    settings="settings/rotorcraft_basic.xml settings/control/rotorcraft_guidance.xml settings/control/stabilization_rate.xml ../conf/modules/cv_colorfilter.xml"
-   settings_modules="modules/geo_mag.xml modules/air_data.xml modules/video_thread.xml modules/video_rtp_stream.xml"
+   settings_modules="modules/geo_mag.xml modules/air_data.xml modules/video_thread.xml modules/ext_colorfilter.xml modules/orange_avoider.xml"
    gui_color="#db67fffffaeb"
   />
   <aircraft

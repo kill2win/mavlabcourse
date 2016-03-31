@@ -1,0 +1,24 @@
+<!DOCTYPE module SYSTEM "module.dtd">
+
+<module name="blob_tracker">
+  <doc>
+    <description>Tracks a colored blob using integral image technique. Draws a crosshair at the blob center.</description>
+  </doc>
+  
+  <depends>video_thread</depends>
+  
+  <header>
+    <file name="blob_tracker.h"/>
+  </header>
+  <init fun="blob_tracker_init()"/>
+  <makefile target="ap">
+    <file name="blob_tracker.c"/>
+    <!--
+    <raw> ap.CFLAGS += -Wno-unused-function</raw>
+    <raw> ap.CFLAGS += $(shell pkg-config --static --cflags opencv)</raw>
+    <raw> ap.LDFLAGS += -static</raw>
+    <raw> ap.LDFLAGS += $(shell pkg-config --static --libs opencv)</raw>
+    -->
+  </makefile>
+</module>
+

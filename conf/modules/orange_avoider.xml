@@ -10,17 +10,10 @@
       <dl_settings NAME="OrangeAvoider">
          <dl_setting var="tresholdOrange_lcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdOrange_lcnt" />
          <dl_setting var="tresholdOrange_clcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdOrange_clcnt" />
-         <dl_setting var="tresholdOrange_cccnt" min="0.0" step="0.05" max="1.0" shortname="tresholdOrange_cccnt" />
          <dl_setting var="tresholdOrange_crcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdOrange_crcnt" />
          <dl_setting var="tresholdOrange_rcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdOrange_rcnt" />
-	 <dl_setting var="tresholdBlack_lcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdBlack_lcnt" />
-         <dl_setting var="tresholdBlack_clcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdBlack_clcnt" />
-         <dl_setting var="tresholdBlack_cccnt" min="0.0" step="0.05" max="1.0" shortname="tresholdBlack_cccnt" />
-         <dl_setting var="tresholdBlack_crcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdBlack_crcnt" />
-         <dl_setting var="tresholdBlack_rcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdBlack_rcnt" />
          <dl_setting var="tresholdavg_lcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdavg_lcnt" />
          <dl_setting var="tresholdavg_clcnt" min="0.0" step="0.05" max="1.0" shortname="tresholdavg_clcnt" />
-         <dl_setting var="tresholdavg_cccnt" min="0.0" step="0.05" max="1.0" shortname="tresholdavg_cccnt" />
          <dl_setting var="tresholdavg_crcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdavg_crcnt" />
          <dl_setting var="tresholdavg_rcnt"  min="0.0" step="0.05" max="1.0" shortname="tresholdavg_rcnt" />
       </dl_settings>

@@ -31,33 +31,22 @@ extern float floor_3;
 extern float floor_tol;
 extern float floor_tol2;
 
-extern float black_tol;
-extern float black_tol2;
 
 extern int color_count;
 
 extern float fh_u;  // upper free space
 extern float fh_l;  // lower free space
 extern float avg_tol;  //Tolerance Factor for determing average pixels!
-extern float avg_tol2;
 extern float centre_width; //Set width of combined middle sectors 
 
 
 extern float lcnt;  //leftcount
 extern float clcnt; //leftcentrecount
-extern float cccnt; //leftcentrecount
 extern float crcnt; //rightcentrecount
 extern float rcnt; //rightcount
 
-extern float black_lcnt;  //leftcount
-extern float black_clcnt; //leftcentrecount
-extern float black_cccnt; //leftcentrecount
-extern float black_crcnt; //rightcentrecount
-extern float black_rcnt; //rightcount
-
 extern float avg_lcnt;  //leftcount
 extern float avg_clcnt; //leftcentrecount
-extern float avg_cccnt; //leftcentrecount
 extern float avg_crcnt; //rightcentrecount
 extern float avg_rcnt; //rightcount
 

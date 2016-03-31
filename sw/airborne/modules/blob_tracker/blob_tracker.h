@@ -1,5 +1,5 @@
 /*
- * Copyright (C) C. De Wagter
+ * Copyright (C) Michaël Ozo
  *
  * This file is part of paparazzi
  *
@@ -18,24 +18,20 @@
  * <http://www.gnu.org/licenses/>.
  */
 /**
- * @file "modules/computer_vision/cv_opencvdemo.h"
- * @author C. De Wagter
- * opencv
+ * @file "modules/blob_tracker/blob_tracker.h"
+ * @author Michaël Ozo
+ * Tracks a colored blob using integral image technique. Draws a crosshair at the blob center.
  */
 
-#ifndef OPENCV_EXAMPLE_H
-#define OPENCV_EXAMPLE_H
+#ifndef BLOB_TRACKER_H
+#define BLOB_TRACKER_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <stdint.h>
+#include "lib/vision/image.h"
 
-int opencv_example(char* img, int width, int height);
-int derotation_test(char* img, int width, int height, float theta, float phi, float psi, float theta_prev, float phi_prev, float psi_prev);
-
-#ifdef __cplusplus
-}
-#endif
+ extern void blob_tracker_init(void);
+ 
+ uint16_t colorblob_uyvy(struct image_t *input, struct image_t *output, uint8_t y_m, uint8_t y_M, uint8_t u_m, uint8_t u_M, uint8_t v_m, uint8_t v_M, uint16_t *pix_x, uint16_t *pix_y, uint16_t *cp_u, uint16_t *cp_v);
 
 #endif
 

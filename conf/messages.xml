@@ -894,7 +894,19 @@
     <field name="servo" type="uint16[]"/>
   </message>
 
-  <!--112 is free -->
+  <message name="MONOCULAR_AVOIDANCE" id="112">
+    <field name="corner_count" type="int32"/>
+    <field name="corner_treshold" type="int32"/>
+    <field name="total_u" type="float"/>
+    <field name="total_v" type="float"/>
+    <field name="divergence" type="float"/>
+    <field name="phi"            type="int32" alt_unit="deg" alt_unit_coef="0.0139882"/>
+    <field name="theta"          type="int32" alt_unit="deg" alt_unit_coef="0.0139882"/>
+    <field name="psi"            type="int32" alt_unit="deg" alt_unit_coef="0.0139882"/>
+    <field name="ins_x"     type="int32" alt_unit="m"    alt_unit_coef="0.0039063"/>
+    <field name="ins_y"     type="int32" alt_unit="m"    alt_unit_coef="0.0039063"/>
+    <field name="ins_z"     type="int32" alt_unit="m"    alt_unit_coef="0.0039063"/>
+    </message>
 
   <message name="MLX_SERIAL" id="113">
     <field name="serial0" type="uint32"/>
