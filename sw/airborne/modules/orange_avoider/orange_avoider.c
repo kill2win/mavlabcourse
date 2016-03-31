@@ -30,11 +30,11 @@ uint8_t safeToGoForwards=FALSE;
 * Charles 
 */
 // Set all tresholds!!!
-float tresholdOrange_lcnt = 0.35;
-float tresholdOrange_clcnt = 0.35;
-float tresholdOrange_cccnt = 0.35;
-float tresholdOrange_crcnt = 0.35;
-float tresholdOrange_rcnt = 0.35;
+float tresholdOrange_lcnt = 0.7;
+float tresholdOrange_clcnt = 0.7;
+float tresholdOrange_cccnt = 0.7;
+float tresholdOrange_crcnt = 0.7;
+float tresholdOrange_rcnt = 0.7;
 float tresholdBlack_lcnt = 0.5;
 float tresholdBlack_clcnt = 0.5;
 float tresholdBlack_cccnt = 0.5;
@@ -72,11 +72,11 @@ void orange_avoider_init() {
 	chooseRandomIncrementAvoidance();
 }
 void orange_avoider_periodic() {
-	safe_Left=((lcnt < tresholdOrange_lcnt) && (avg_lcnt < tresholdavg_lcnt) && (black_lcnt < tresholdBlack_lcnt));
-	safe_LeftCentre=((clcnt < tresholdOrange_clcnt) && (avg_clcnt < tresholdavg_clcnt) && (black_clcnt < tresholdBlack_clcnt));
-	safe_Centre=((cccnt < tresholdOrange_cccnt) && (avg_cccnt < tresholdavg_cccnt) && (black_cccnt < tresholdBlack_cccnt));
-	safe_RightCentre=((crcnt < tresholdOrange_crcnt) && (avg_crcnt < tresholdavg_crcnt) && (black_crcnt < tresholdBlack_crcnt));
-	safe_Right=((rcnt < tresholdOrange_rcnt)&&(avg_rcnt < tresholdavg_rcnt)&&(black_rcnt < tresholdBlack_rcnt));
+	safe_Left=((lcnt < tresholdOrange_lcnt)); // && (avg_lcnt < tresholdavg_lcnt) && (black_lcnt < tresholdBlack_lcnt));
+	safe_LeftCentre=((clcnt < tresholdOrange_clcnt));// && (avg_clcnt < tresholdavg_clcnt) && (black_clcnt < tresholdBlack_clcnt));
+	safe_Centre=((cccnt < tresholdOrange_cccnt));// && (avg_cccnt < tresholdavg_cccnt) && (black_cccnt < tresholdBlack_cccnt));
+	safe_RightCentre=((crcnt < tresholdOrange_crcnt));// && (avg_crcnt < tresholdavg_crcnt) && (black_crcnt < tresholdBlack_crcnt));
+	safe_Right=((rcnt < tresholdOrange_rcnt));//&&(avg_rcnt < tresholdavg_rcnt)&&(black_rcnt < tresholdBlack_rcnt));
 
 	safeToGoForwards_Orange=(  (lcnt < tresholdOrange_lcnt)    // left sector orange count
 		&&(clcnt < tresholdOrange_clcnt)  // left centre sector orange count
@@ -84,7 +84,7 @@ void orange_avoider_periodic() {
 		&&(crcnt < tresholdOrange_crcnt)  // right centre sector orange count
 		&&(rcnt < tresholdOrange_rcnt) // right sector orange count
 		);
-	safeToGoForwards_Average=(
+	/*safeToGoForwards_Average=(
 		(avg_lcnt < tresholdavg_lcnt)
 		&&(avg_clcnt < tresholdavg_clcnt)
 		&&(avg_cccnt < tresholdavg_cccnt)
@@ -97,10 +97,10 @@ void orange_avoider_periodic() {
 		&&(black_cccnt < tresholdBlack_cccnt)
 		&&(black_crcnt < tresholdBlack_crcnt)
 		&&(black_rcnt < tresholdBlack_rcnt)
-		);
+		);*/
 
 	safeToGoForwards =( 
-	( safeToGoForwards_Orange) && (safeToGoForwards_Average) && (safeToGoForwards_Black)		
+	( safeToGoForwards_Orange)// && (safeToGoForwards_Average) && (safeToGoForwards_Black)		
 	 );  
 	
 printf("\n\nSave to go:%d Orange %d , Average %d , Black %d ",  safeToGoForwards, safeToGoForwards_Orange, safeToGoForwards_Average, safeToGoForwards_Black);

@@ -45,8 +45,8 @@ float black_tol=0.05;
 float black_tol2=0.15;
 
 
-float fh_u=0.35;  // upper free space
-float fh_l=0.35;  // lower free space
+float fh_u=0.25;  // upper free space
+float fh_l=0.25;  // lower free space
 float avg_tol = 0.075;  //Tolerance Factor for determing average pixels!
 float avg_tol2 = 0.1;
 float centre_width=0.5; //Set width of combined middle sectors
