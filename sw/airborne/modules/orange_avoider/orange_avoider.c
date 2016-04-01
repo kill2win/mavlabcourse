@@ -41,11 +41,11 @@ uint8_t safe_Centre=FALSE;
 uint8_t safe_RightCentre=FALSE;
 uint8_t safe_Right=FALSE;
 
-float tresholdOrange_lcnt = 0.28;
-float tresholdOrange_clcnt = 0.32;
+float tresholdOrange_lcnt = 0.3;
+float tresholdOrange_clcnt = 0.35;
 float tresholdOrange_cccnt = 0.4;
-float tresholdOrange_crcnt = 0.32;
-float tresholdOrange_rcnt = 0.28;
+float tresholdOrange_crcnt = 0.35;
+float tresholdOrange_rcnt = 0.3;
 float tresholdBlack_lcnt = 0.45;
 float tresholdBlack_clcnt = 0.45;
 float tresholdBlack_cccnt = 0.45;
@@ -109,7 +109,7 @@ void orange_avoider_periodic() {
 		&&(black_crcnt < tresholdBlack_crcnt)
 		&&(black_rcnt < tresholdBlack_rcnt)
 		)		
-		&&(div1<0.12)
+		&&(div1<0.11)
 	 );  
 	printf("\n\nSave to go:%d Orange %d ,  Black %d ",  safeToGoForwards, safeToGoForwards_Orange, safeToGoForwards_Black);
 printf("\nLeft:%d LeftCentre %d , Centre %d , RightCentre %d , Right %d \n",  safe_Left, safe_LeftCentre, safe_Centre,  safe_RightCentre , safe_Right);
